@@ -1,0 +1,113 @@
+.timer-box{
+    width: 600px;
+    height: 300px;
+    border: 1px solid rgb(184, 183, 183);
+    border-radius: 8px;
+    position: relative;
+}
+.header{
+    line-height: 10px;
+    text-align: center;
+}
+
+hr{
+    border-top: 1px solid rgb(184, 183, 183);
+}
+
+.digits-container{
+    margin: 0;
+    padding: 20px;
+    font-size: 27px;
+    letter-spacing: 3px;
+    
+}
+
+.time-digits{
+    font-size: 55px;
+    font-weight: 20px;
+    margin: 0 0 0 15px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid rgb(184, 183, 183);
+}
+
+.control{
+    position: absolute;
+    display: flex;
+    align-items: center;
+    bottom: 0px;
+    border-top: 1px solid rgb(184, 183, 183);
+    width: 600px;
+    height: 68px;
+    box-sizing: border-box;
+}
+
+#start-btn, #reset-btn{
+    height: 28px;
+    width: 70px;
+    margin-left: 20px;
+    border: 1px solid rgb(177, 177, 177);
+    /* background-color: #1a73e8; */
+    border-radius: 5%;
+    cursor: pointer;
+    text-align: center;
+    font-size: 11px;
+    font-weight: bold;
+}
+
+#start-btn{
+    color: white;
+    background-color: #1a73e8;
+}
+
+#start-btn:focus{
+    background-color: #1357af;
+    border: none;
+}
+
+#reset-btn{
+    color:  #1a73e8;
+    background-color: white;
+}
+
+#reset-btn:focus{
+    background-color: rgb(220, 231, 250);
+    border: none;
+}
+
+
+.time-choice{
+    display: flex;
+    margin-left: auto;
+    margin-right: 20px;
+}
+
+.choice{
+    display: none;
+}
+
+.tab-handler{
+    height: 28px;
+    width: 60px;
+    border: 1px solid rgb(177, 177, 177);
+    text-align: center;
+    font-size: 11px;
+    font-weight: bold;
+    box-sizing: border-box;
+    line-height: 25px;
+    margin-left: auto;
+    cursor: pointer;
+}
+
+.choice:checked + .tab-handler{
+    color: #fff;
+    background-color: #4fd156;
+}
+
+.handler1{
+    border-radius: 5% 0 0 5%;
+    border-right: none;
+}
+
+.handler2{
+    border-radius: 0 5% 5% 0;
+}
