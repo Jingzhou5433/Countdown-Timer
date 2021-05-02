@@ -9,7 +9,6 @@ let secDigit = document.querySelector('#sec-digits');
 (function init(){
     time1Radio.checked = true;
     console.log("init!");
-    strToTime();
     countHandler();
 })();
 
@@ -38,6 +37,16 @@ function numToStr(totalSec){
    
 }
 
+function resetStyle(btnText, timeColor){
+    startBtn.innerHTML = btnText;
+    minDigit.style.color = timeColor;
+    secDigit.style.color = timeColor;
+}
+
+function setTimeDigit(min, sec){
+    minDigit.innerHTML = min;
+    secDigit.innerHTML = sec;
+}
 
 // Control function
 function countHandler(){
@@ -50,62 +59,63 @@ function countHandler(){
         let totalSec = strToTime();
         
         if(text === 'START'){
-            startBtn.innerHTML = 'STOP';
+            resetStyle('STOP', "black");
+
             totalSec -= 1;
             numToStr(totalSec);
 
             timerID = setInterval(()=>{
                 if(totalSec <= 0){
                     clearInterval(timerID);
-                    window.alert("Time is up!");         
-                    minDigit.innerHTML = "00";
-                    sec.innerHTML = '00';
+                    window.alert("Time is up!"); 
+                    resetStyle("OK");
+                    return;
                 }
 
                 totalSec -= 1;
                 numToStr(totalSec);
                 
             }, 1000);
-        }else{
-            startBtn.innerHTML = 'START';
+        }else if(text === 'STOP'){
+            
+            resetStyle('START', "rgb(184, 183, 183)");
             clearInterval(timerID);
         }
+        
     })
 
     resetBtn.addEventListener('click', ()=>{
         if(timerID){
             clearInterval(timerID);
         }
-        startBtn.innerHTML = 'START'
-
+        
+        resetStyle('START', "black");
         if(time1Radio.checked){
-            minDigit.innerHTML = "05";
-            secDigit.innerHTML = '00';
+    
+            setTimeDigit("05","00");
         }
     
         else if(time2Radio.checked){
-            minDigit.innerHTML = "25";
-            secDigit.innerHTML = '00';
+ 
+            setTimeDigit("25","00");
         }
     });
 
     time1Radio.addEventListener('click', ()=>{
         if(timerID){
             clearInterval(timerID);
-            startBtn.innerHTML = 'START'
+            
+            resetStyle('START', "black");
         }
-        console.log('radio Button 1');
-        minDigit.innerHTML = "05";
-        secDigit.innerHTML = '00';
+        setTimeDigit("05","00");
     });
 
     time2Radio.addEventListener('click', ()=>{
         if(timerID){
             clearInterval(timerID);
-            startBtn.innerHTML = 'START'
-        }
-        console.log('radio Button 2');
-        minDigit.innerHTML = "25";
-        secDigit.innerHTML = '00';
+            
+            resetStyle('START', "black");
+        }       
+        setTimeDigit("25","00");
     });
 }
